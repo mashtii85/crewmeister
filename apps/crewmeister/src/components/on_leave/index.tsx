@@ -1,11 +1,29 @@
 /**
  * Components - On_Leave - Index
  */
-import { absences } from '@crewmeister-code-challenge/services'
+
+// Services
+import { AbsencesService } from '@crewmeister-code-challenge/services'
+
+//React-Query
+import { useQuery } from 'react-query'
+
 export const OnLeave = () => {
-  const a = absences()
+  const service = new AbsencesService()
+
+  const { data, error, isLoading } = useQuery('absence-list', service.get)
+
+  if (isLoading) {
+    return <div>loading...</div>
+  }
+
+  if (error) {
+    console.log(error)
+  }
+
   return (
     <div className="bg-gray-50">
+      {data.payload.length}
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
         <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
           <span className="block">Ready to dive in?</span>

@@ -2,31 +2,29 @@
  * Index
  */
 
-// Axios
+// Types
 import { IBaseModel } from '@crewmeister-code-challenge/types'
+
+// Axios
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 
-class APIService {
-  private static _instance: APIService // = new APIService()
-  // _commonService = new CommonService()
-  // appStore = useContext(store)
+class BaseService {
+  private static _instance: BaseService // = new APIService()
 
   constructor() {
-    if (APIService._instance) {
-      return APIService._instance
+    if (BaseService._instance) {
+      return BaseService._instance
     }
 
-    APIService._instance = this
+    BaseService._instance = this
     return this
   }
 
   public async readJsonFile<T>(fileName: string): Promise<IBaseModel<T>> {
-    const response = import('./db/' + fileName)
+    const response = import('./db/' + fileName + '.json')
 
     return new Promise((resolve) => resolve(response))
       .then((data: any) => {
-        console.log('data=>', data)
-
         return data
       })
       .catch((error) => {
@@ -81,4 +79,4 @@ class APIService {
   }
 }
 
-export default APIService
+export default BaseService

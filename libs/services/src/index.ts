@@ -1,2 +1,6 @@
-export * from './services'
-export * from './absence'
+/**
+ * Index
+ */
+
+export * from './absences'
+export * from './members'
