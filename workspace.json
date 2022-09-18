@@ -1,0 +1,11 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "api-service": "libs/api-service",
+    "constants": "libs/constants",
+    "crewmeister": "apps/crewmeister",
+    "crewmeister-e2e": "apps/crewmeister-e2e",
+    "types": "libs/types"
+  }
+}
