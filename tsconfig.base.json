@@ -4,23 +4,28 @@
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
-    "moduleResolution": "node",
+    "moduleResolution": "Node16",
     "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": false,
+    "pretty": true,
+    "resolveJsonModule": true,
     "module": "esnext",
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@crewmeister-code-challenge/api-service": [
-        "libs/api-service/src/index.ts"
-      ],
       "@crewmeister-code-challenge/constants": ["libs/constants/src/index.ts"],
+      "@crewmeister-code-challenge/services": ["libs/services/src/index.ts"],
       "@crewmeister-code-challenge/types": ["libs/types/src/index.ts"]
     }
   },
+  "include": ["**/*/*.json"],
   "exclude": ["node_modules", "tmp"]
 }
