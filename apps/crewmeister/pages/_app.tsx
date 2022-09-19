@@ -11,6 +11,7 @@ import './styles.css'
 
 //ReactQuery
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { MemberProvider } from '../src/components/member/context/context'
 
 const queryClient = new QueryClient()
 
@@ -21,7 +22,9 @@ function CustomApp({ Component, pageProps }: AppProps) {
         <title>Welcome to crewmeister!</title>
       </Head>
       <main className="app">
-        <Component {...pageProps} />
+        <MemberProvider>
+          <Component {...pageProps} />
+        </MemberProvider>
       </main>
     </QueryClientProvider>
   )

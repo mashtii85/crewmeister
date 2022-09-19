@@ -8,9 +8,15 @@ import { AbsencesService } from '@crewmeister-code-challenge/services'
 //React-Query
 import { useQuery } from 'react-query'
 
+// UI
+import { Table } from '@crewmeister-code-challenge/ui-components'
+import { IAbsence } from '@crewmeister-code-challenge/types'
+import { useContext } from 'react'
+import { MemberContext, MemberProvider } from '../member/context/context'
+
 export const OnLeave = () => {
   const service = new AbsencesService()
-
+  const membersContext = useContext(MemberContext)
   const { data, error, isLoading } = useQuery('absence-list', service.get)
 
   if (isLoading) {
@@ -18,36 +24,19 @@ export const OnLeave = () => {
   }
 
   if (error) {
+    //add error handling platform like sentry in here
     console.log(error)
   }
+  // const abc: { [key: string]: keyof IAbsence } =['']
 
-  return (
-    <div className="bg-gray-50">
-      {data.payload.length}
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-        <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          <span className="block">Ready to dive in?</span>
-          <span className="block text-indigo-600">Start your free trial today.</span>
-        </h2>
-        <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
-          <div className="inline-flex rounded-md shadow">
-            <a
-              href="#"
-              className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
-            >
-              Get started
-            </a>
-          </div>
-          <div className="ml-3 inline-flex rounded-md shadow">
-            <a
-              href="#"
-              className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50"
-            >
-              Learn more
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+  const newList =
+    data?.payload?.map((absence) => {
+      const member = membersContext.members.find((member) => member.userId === absence.userId)
+      return {
+        name: member.name,
+        reason: absence.type
+      }
+    }) ?? []
+
+  return <Table content={newList} />
 }

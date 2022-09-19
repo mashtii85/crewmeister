@@ -6,6 +6,7 @@
     "crewmeister": "apps/crewmeister",
     "crewmeister-e2e": "apps/crewmeister-e2e",
     "services": "libs/services",
-    "types": "libs/types"
+    "types": "libs/types",
+    "ui-components": "libs/ui-components"
   }
 }
