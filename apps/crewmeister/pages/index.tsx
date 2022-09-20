@@ -2,6 +2,6 @@
  * Pages - Index
  */
 
-import OnLeave from './on_leave'
+import Absence from './absence'
 
-export default OnLeave
+export default Absence

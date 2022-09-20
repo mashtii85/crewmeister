@@ -21,6 +21,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@crewmeister-code-challenge/assets": ["libs/assets/src/index.ts"],
       "@crewmeister-code-challenge/constants": ["libs/constants/src/index.ts"],
       "@crewmeister-code-challenge/services": ["libs/services/src/index.ts"],
       "@crewmeister-code-challenge/types": ["libs/types/src/index.ts"],

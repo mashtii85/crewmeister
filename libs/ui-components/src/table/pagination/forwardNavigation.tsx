@@ -2,6 +2,8 @@
  * Table - Pagination - ForwardNavigation
  */
 
+import tw from 'tailwind-styled-components'
+
 export const ForwardNavigation = ({
   isLastPage,
   currentPage,

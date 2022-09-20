@@ -9,7 +9,8 @@
       "defaultConfiguration": "production",
       "options": {
         "root": "apps/crewmeister",
-        "outputPath": "dist/apps/crewmeister"
+        "outputPath": "dist/apps/crewmeister",
+        "postcssConfig": "apps/crewmeister/postcss.config.js"
       },
       "configurations": {
         "development": {

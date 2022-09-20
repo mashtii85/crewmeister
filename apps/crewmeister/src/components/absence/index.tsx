@@ -32,17 +32,20 @@ export const OnLeave = () => {
     {
       hidden: true,
       text: 'id'
+      // sort: true
     },
     {
       hidden: false,
-      text: 'Name'
+      text: 'Name',
+      sortable: true
     },
     {
       hidden: false,
       text: 'Type',
       formatter({ row }) {
         return row
-      }
+      },
+      sortable: true
     }
   ]
 
