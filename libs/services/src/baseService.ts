@@ -25,7 +25,7 @@ class BaseService {
 
     return new Promise((resolve) => resolve(response))
       .then((data: any) => {
-        console.log('data', data.payload)
+        // console.log('data', data.payload)
         return data
       })
       .catch((error) => {

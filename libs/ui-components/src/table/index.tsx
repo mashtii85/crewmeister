@@ -2,8 +2,23 @@
  * Table - Index
  */
 
-export const Table = ({ content }: { content: any[] }) => {
-  const head = Object.keys(content[0])
+import { IColumn } from '@crewmeister-code-challenge/types'
+import { useEffect, useState } from 'react'
+import { Pagination } from './pagination/index'
+
+export const Table = ({ rows, columns, isLoading }: { rows: any[]; columns: IColumn<any>[]; isLoading?: boolean }) => {
+  const pageLimit = 10
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const [rowsChunk, setRowsChunk] = useState(rows)
+  const slice = (currentPage - 1) * pageLimit
+
+  useEffect(() => {
+    const chunk = rows.slice(slice, slice + pageLimit)
+
+    setRowsChunk(chunk)
+  }, [currentPage])
+
   return (
     <div className="flex flex-col">
       <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -15,28 +30,43 @@ export const Table = ({ content }: { content: any[] }) => {
                   <th scope="col" className="text-sm font-medium text-white px-6 py-4">
                     #
                   </th>
-                  {head.map((item, index) => (
-                    <th key={index} scope="col" className="text-sm font-medium text-white px-6 py-4">
-                      {item}
-                    </th>
-                  ))}
+                  {columns.map((column, index) => {
+                    if (column.hidden) return null
+                    return (
+                      <th key={index} scope="col" className="text-sm font-medium text-white px-6 py-4">
+                        {column.text}
+                      </th>
+                    )
+                  })}
                 </tr>
               </thead>
               <tbody>
-                {content.map((item, index) => {
-                  // Object.entries(item).map((entry) => console.log('entry', entry[0]))
+                {rowsChunk.map((item, index) => {
                   return (
                     <tr key={item['id']} className={index % 2 === 0 ? 'bg-white border-b' : 'bg-gray-100 border-b'}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{index + 1}</td>
-
-                      {Object.values(item).map((value: any) => {
-                        return <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{value}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {slice + index + 1}
+                      </td>
+                      {Object.values(item).map((row, rowIndex) => {
+                        const column = columns[rowIndex]
+                        if (column.hidden) return null
+                        const record = column.formatter ? column.formatter({ row }) : row
+                        return (
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{record!}</td>
+                        )
                       })}
-                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">Otto</td>
                     </tr>
                   )
                 })}
               </tbody>
+              <Pagination
+                currentPage={currentPage}
+                limit={pageLimit}
+                columnLength={columns.length}
+                total={rows.length}
+                key={'key'}
+                onPageChange={setCurrentPage}
+              />
             </table>
           </div>
         </div>

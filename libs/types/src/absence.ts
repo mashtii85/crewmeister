@@ -18,3 +18,8 @@ export interface IAbsence {
   type: AbsenceType
   userId: number
 }
+
+export interface IAbsenceViewModel {
+  name: string
+  type: string
+}

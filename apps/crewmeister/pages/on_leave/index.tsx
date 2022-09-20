@@ -2,7 +2,7 @@
  * Pages - OnLeave - Index
  */
 
-import { OnLeave } from '../../src/components/on_leave'
+import { OnLeave } from '../../src/components/absence'
 
 // Next
 import type { NextPage } from 'next'
