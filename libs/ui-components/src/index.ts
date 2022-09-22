@@ -2,5 +2,6 @@
  * Index
  */
 
-export * from './lib/ui-components'
 export * from './table'
+export * from './absence'
+export * from './members'

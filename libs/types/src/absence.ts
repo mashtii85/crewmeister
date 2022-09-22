@@ -2,8 +2,9 @@
  * IAbsence.d
  */
 
-import { AbsenceType } from '@crewmeister-code-challenge/constants'
+export type TAbsenceType = 'SICKNESS' | 'VACINATION' | 'VACATION'
 
+export type TAbsenceStatus = 'REQUESTED' | 'REJECTED' | 'CONFIRMED'
 export interface IAbsence {
   admitterId?: number
   admitterNote?: string
@@ -15,11 +16,14 @@ export interface IAbsence {
   memberNote: string
   rejectedAt?: string
   startDate: string
-  type: AbsenceType
+  type: TAbsenceType
   userId: number
 }
 
 export interface IAbsenceViewModel {
+  id: number
   name: string
-  type: string
+  type: TAbsenceType
+  period: string
+  status: TAbsenceStatus
 }

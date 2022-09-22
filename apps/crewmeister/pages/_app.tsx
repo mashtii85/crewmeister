@@ -11,7 +11,7 @@ import './styles.css'
 
 //ReactQuery
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { MemberProvider } from '../src/components/member/context/context'
+import { MemberProvider } from '@crewmeister-code-challenge/ui-components'
 
 const queryClient = new QueryClient()
 

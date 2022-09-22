@@ -2,11 +2,10 @@
  * Pages - OnLeave - Index
  */
 
-import { OnLeave } from '../../src/components/absence'
-
 // Next
+import { Absence } from '@crewmeister-code-challenge/ui-components'
 import type { NextPage } from 'next'
 
-const OnLeavePage: NextPage = () => <OnLeave />
+const OnLeavePage: NextPage = () => <Absence />
 
 export default OnLeavePage

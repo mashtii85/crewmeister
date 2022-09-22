@@ -3,12 +3,24 @@
  */
 
 import { IColumn, ISetSort, TSort } from '@crewmeister-code-challenge/types'
+import { sortObject } from '@crewmeister-code-challenge/utility'
 import { useEffect, useState } from 'react'
+import { OffCanvas } from '../off_canvas/index'
 import { TableHealder } from './header'
 import { Pagination } from './pagination/index'
 import { StyledTd } from './styles'
 
-export const Table = ({ rows, columns, isLoading }: { rows: any[]; columns: IColumn<any>[]; isLoading?: boolean }) => {
+export const Table = ({
+  rows,
+  columns,
+  isLoading,
+  detailsHandler
+}: {
+  rows: any[]
+  columns: IColumn<any>[]
+  isLoading?: boolean
+  detailsHandler?: (props: any) => void
+}) => {
   const pageLimit = 10
   const [currentPage, setCurrentPage] = useState(1)
   const [sort, setSort] = useState<ISetSort>()
@@ -20,7 +32,7 @@ export const Table = ({ rows, columns, isLoading }: { rows: any[]; columns: ICol
 
     if (sort) {
       const key = Object.keys(rows[0])[sort.columnIndex].toString()
-      chunk.sort((a, b) => (a[key] > b[key] ? 1 : b[key] > a[key] ? -1 : 0))
+      sortObject<any>({ array: chunk, key, sortType: sort.sortType })
     }
 
     setRowsChunk(chunk)
@@ -46,7 +58,10 @@ export const Table = ({ rows, columns, isLoading }: { rows: any[]; columns: ICol
                   return <td>{record!}</td>
                 })}
                 <StyledTd>
-                  <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+                  <a
+                    onClick={() => detailsHandler(item)}
+                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                  >
                     Edit
                   </a>
                 </StyledTd>
@@ -62,6 +77,17 @@ export const Table = ({ rows, columns, isLoading }: { rows: any[]; columns: ICol
           onPageChange={setCurrentPage}
         />
       </table>
+      <div className="text-center">
+        <button
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          type="button"
+          data-drawer-target="drawer-example1"
+          data-drawer-show="drawer-example"
+          aria-controls="drawer-example"
+        >
+          Show drawer
+        </button>
+      </div>
     </div>
   )
 }
