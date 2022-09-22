@@ -2,92 +2,63 @@
  *
  */
 
-export const AbsenceDetails = () => {
+import { IAbsence, IAbsenceDetails, IAbsenceViewModel } from '@crewmeister-code-challenge/types'
+import { DateDiffInDays } from '@crewmeister-code-challenge/utility'
+import { useContext } from 'react'
+import { MemberContext } from '../../members/index'
+import { calculateStatus } from '../helpers/status'
+
+export const AbsenceDetails = ({ absence }: { absence: Partial<IAbsenceViewModel> }) => {
+  const { members } = useContext(MemberContext)
+
+  const member = members.find((item) => item.userId === absence.userId)
+  const days =
+    absence.startDate && absence.endDate ? DateDiffInDays(absence.startDate!, absence.endDate!, { showDay: true }) : 0
+  console.log('image:', absence.image)
+  // const status = calculateStatus({ confirmed: absence.rejectedAt, rejected: absence.confirmedAt })
   return (
     <div className="overflow-hidden bg-white shadow sm:rounded-lg">
+      <span className="flex  p-5 content-center items-center">
+        <img src={`${absence.image}?lock=1`} alt="" className=" w-20 h-20 rounded-full" />
+      </span>
       <div className="px-4 py-5 sm:px-6">
-        <h3 className="text-lg font-medium leading-6 text-gray-900">Applicant Information</h3>
-        <p className="mt-1 max-w-2xl text-sm text-gray-500">Personal details and application.</p>
+        <h3 className="text-lg font-medium leading-6 text-gray-900"></h3>
+        <p className="mt-1 max-w-2xl text-sm text-gray-500">{member?.name}'s Absence Details</p>
       </div>
+
       <div className="border-t border-gray-200">
         <dl>
           <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Full name</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Margot Foster</dd>
+            <dt className="text-sm font-medium text-gray-500">Absence Type</dt>
+            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{absence.type}</dd>
           </div>
+
           <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Application for</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Backend Developer</dd>
-          </div>
-          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Email address</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">margotfoster@example.com</dd>
-          </div>
-          <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Salary expectation</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">$120,000</dd>
-          </div>
-          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">About</dt>
+            <dt className="text-sm font-medium text-gray-500">Period</dt>
             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-              Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur
-              qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud
-              pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
+              {absence.startDate} - {absence.endDate}
             </dd>
           </div>
-          <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Attachments</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-              <ul role="list" className="divide-y divide-gray-200 rounded-md border border-gray-200">
-                <li className="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
-                  <div className="flex w-0 flex-1 items-center">
-                    <svg
-                      className="h-5 w-5 flex-shrink-0 text-gray-400"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    <span className="ml-2 w-0 flex-1 truncate">resume_back_end_developer.pdf</span>
-                  </div>
-                  <div className="ml-4 flex-shrink-0">
-                    <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                      Download
-                    </a>
-                  </div>
-                </li>
-                <li className="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
-                  <div className="flex w-0 flex-1 items-center">
-                    <svg
-                      className="h-5 w-5 flex-shrink-0 text-gray-400"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    <span className="ml-2 w-0 flex-1 truncate">coverletter_back_end_developer.pdf</span>
-                  </div>
-                  <div className="ml-4 flex-shrink-0">
-                    <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                      Download
-                    </a>
-                  </div>
-                </li>
-              </ul>
-            </dd>
+          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt className="text-sm font-medium text-gray-500">Total Days</dt>
+            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{days}</dd>
           </div>
+          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt className="text-sm font-medium text-gray-500">Status</dt>
+            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{absence.status}</dd>
+          </div>
+          {absence.memberNote && (
+            <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt className="text-sm font-medium text-gray-500">Member Note</dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{absence.memberNote}</dd>
+            </div>
+          )}
+          {absence.admitterNote && (
+            <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt className="text-sm font-medium text-gray-500">Member Note</dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{absence.admitterNote}</dd>
+            </div>
+          )}
         </dl>
       </div>
     </div>

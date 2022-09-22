@@ -14,7 +14,8 @@ export const OffCanvas = ({
   setOpen: Dispatch<SetStateAction<boolean>>
   children: JSX.Element | JSX.Element[]
 }) => {
-  let cssClass = 'fixed z-40 h-screen p-4 overflow-y-auto bg-white w-80 dark:bg-gray-800'
+  let cssClass =
+    'hs-overlay hs-overlay-open:translate-x-0 fixed z-40 h-screen p-4 overflow-y-auto bg-white w-80 transition-all duration-300 dark:bg-gray-800'
 
   cssClass += open ? '' : ' -translate-x-full'
 

@@ -13,7 +13,7 @@ import { useContext, useState } from 'react'
 
 import { calculateStatus, tableColumns } from './helpers/index'
 import { DateDiffInDays } from '@crewmeister-code-challenge/utility'
-import { IAbsenceViewModel } from '@crewmeister-code-challenge/types'
+import { IAbsence, IAbsenceDetails, IAbsenceViewModel } from '@crewmeister-code-challenge/types'
 import { MemberContext } from '../members/context'
 import { AbsencesService } from '@crewmeister-code-challenge/services'
 import { OffCanvas } from '../off_canvas/index'
@@ -23,13 +23,15 @@ import { prepareRows } from './helpers/prepare_rows'
 
 export const Absence = () => {
   const service = new AbsencesService()
-  const membersContext = useContext(MemberContext)
+  const { members } = useContext(MemberContext)
   const { data, error, isLoading } = useQuery('absence-list', service.get)
 
   const [openCanvas, setOpenCanvas] = useState<boolean>(false)
+  const [selectedAbsence, setSelectedAbsence] = useState<Partial<IAbsence>>({})
 
-  const handleDetails = (row: any) => {
+  const handleDetails = (row: IAbsence) => {
     setOpenCanvas(true)
+    setSelectedAbsence(row)
   }
 
   if (isLoading) {
@@ -41,26 +43,13 @@ export const Absence = () => {
     console.log(error)
   }
 
-  // const content: IAbsenceViewModel[] = data?.payload?.map((absence) => {
-  //   const member = membersContext.members.find((member) => member.userId === absence.userId)
-  //   const item: IAbsenceViewModel = {
-  //     id: absence.id,
-  //     name: member?.name ?? 'unknown',
-  //     type: absence.type,
-  //     period: DateDiffInDays(absence.startDate, absence.endDate, { showDay: true }),
-  //     status: calculateStatus({ confirmed: absence.rejectedAt, rejected: absence.confirmedAt })
-  //   }
-
-  //   return item
-  // })
-
   return (
     <>
       <OffCanvas open={openCanvas} setOpen={setOpenCanvas}>
-        <AbsenceDetails />
+        <AbsenceDetails absence={selectedAbsence} />
       </OffCanvas>
       <Table
-        rows={prepareRows({ absenceList: data?.payload ?? [], members: membersContext.members })}
+        rows={prepareRows({ absenceList: data?.payload ?? [], members: members })}
         columns={tableColumns}
         detailsHandler={handleDetails}
       />

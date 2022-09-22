@@ -3,6 +3,7 @@
  */
 
 export const DateDiffInDays = (startDate: string, endDate: string, { showDay }: { showDay: boolean }): string => {
+  if (!startDate || !endDate) return ''
   const start = new Date(startDate)
 
   const end = new Date(endDate)

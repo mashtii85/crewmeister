@@ -2,6 +2,7 @@
  * Table - Index
  */
 
+import { PersonDetails } from '@crewmeister-code-challenge/assets'
 import { IColumn, ISetSort, TSort } from '@crewmeister-code-challenge/types'
 import { sortObject } from '@crewmeister-code-challenge/utility'
 import { useEffect, useState } from 'react'
@@ -60,9 +61,9 @@ export const Table = ({
                 <StyledTd>
                   <a
                     onClick={() => detailsHandler(item)}
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline hover:cursor-pointer"
                   >
-                    Edit
+                    <PersonDetails />
                   </a>
                 </StyledTd>
               </tr>

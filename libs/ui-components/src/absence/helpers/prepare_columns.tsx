@@ -8,7 +8,14 @@ export const tableColumns: IColumn<IAbsenceViewModel>[] = [
   {
     hidden: true,
     text: 'id'
-    // sort: true
+  },
+  {
+    hidden: true,
+    text: 'image'
+  },
+  {
+    hidden: true,
+    text: 'userId'
   },
   {
     hidden: false,
@@ -30,5 +37,21 @@ export const tableColumns: IColumn<IAbsenceViewModel>[] = [
   {
     hidden: false,
     text: 'Status'
+  },
+  {
+    hidden: true,
+    text: 'Start Date'
+  },
+  {
+    hidden: true,
+    text: 'End Date'
+  },
+  {
+    hidden: true,
+    text: 'Member Note'
+  },
+  {
+    hidden: true,
+    text: 'Admitter Note'
   }
 ]

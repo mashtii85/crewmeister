@@ -22,8 +22,24 @@ export interface IAbsence {
 
 export interface IAbsenceViewModel {
   id: number
+  userId: number
   name: string
   type: TAbsenceType
   period: string
   status: TAbsenceStatus
+  startDate: string
+  endDate: string
+  memberNote?: string
+  admitterNote?: string
+  image: string
+}
+
+export interface IAbsenceDetails {
+  id: number
+  name: string
+  type: TAbsenceType
+  period: string
+  status: TAbsenceStatus
+  addmitterNode?: string
+  memberNote?: string
 }

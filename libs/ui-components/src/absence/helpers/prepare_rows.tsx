@@ -14,15 +14,21 @@ export const prepareRows = ({
   absenceList: IAbsence[]
 }): IAbsenceViewModel[] => {
   const content: IAbsenceViewModel[] = absenceList?.map((absence) => {
-    const member = members.find((member) => member.userId === absence.userId)
+    const member = members.find((member) => member.userId === absence.userId)!
+
     const item: IAbsenceViewModel = {
       id: absence.id,
-      name: member?.name ?? 'unknown',
+      userId: absence.userId,
+      name: member?.name ?? '',
       type: absence.type,
-      period: DateDiffInDays(absence.startDate, absence.endDate, { showDay: true }),
-      status: calculateStatus({ confirmed: absence.rejectedAt, rejected: absence.confirmedAt })
+      period: DateDiffInDays(absence?.startDate ?? 0, absence?.endDate ?? 0, { showDay: true }),
+      status: calculateStatus({ confirmed: absence.rejectedAt, rejected: absence.confirmedAt }),
+      startDate: absence.startDate,
+      endDate: absence.endDate,
+      memberNote: absence.memberNote,
+      admitterNote: absence.admitterNote,
+      image: member?.image
     }
-
     return item
   })
 
