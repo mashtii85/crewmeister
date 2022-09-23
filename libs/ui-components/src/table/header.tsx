@@ -4,11 +4,12 @@
 
 import { BarsArrowDown, BarsArrowUp, Cog } from '@crewmeister-code-challenge/assets'
 import { ITableHeader } from '@crewmeister-code-challenge/types'
+import { StyledSortButton, StyledSortContainer, StyledThead } from 'libs/styles/src/misc/table/header'
 import { StyledHeader } from './styles'
 
 export const TableHeader = ({ columns, sortHandler }: ITableHeader) => {
   return (
-    <thead className="text-xs text-white uppercase  dark: bg-gray-400 dark:text-gray-400 ">
+    <StyledThead>
       <tr>
         <th scope="col" className="py-3 px-3">
           <StyledHeader>#</StyledHeader>
@@ -17,19 +18,19 @@ export const TableHeader = ({ columns, sortHandler }: ITableHeader) => {
           if (column.hidden) return null
           return (
             <th key={index} scope="col" className="py-3">
-              <div className="flex items-center">
+              <StyledSortContainer>
                 {column?.sortable && (
                   <div className="pr-3">
-                    <a className="hover:cursor-pointer" onClick={() => sortHandler(index, 'ASC')}>
+                    <StyledSortButton onClick={() => sortHandler(index, 'ASC')}>
                       <BarsArrowUp />
-                    </a>
-                    <a className="hover:cursor-pointer" onClick={() => sortHandler(index, 'DES')}>
+                    </StyledSortButton>
+                    <StyledSortButton onClick={() => sortHandler(index, 'DES')}>
                       <BarsArrowDown />
-                    </a>
+                    </StyledSortButton>
                   </div>
                 )}
                 <StyledHeader>{column.text}</StyledHeader>
-              </div>
+              </StyledSortContainer>
             </th>
           )
         })}
@@ -43,6 +44,6 @@ export const TableHeader = ({ columns, sortHandler }: ITableHeader) => {
           </div>
         </th>
       </tr>
-    </thead>
+    </StyledThead>
   )
 }

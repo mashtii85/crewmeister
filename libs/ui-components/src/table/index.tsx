@@ -5,10 +5,10 @@
 import { PersonDetails } from '@crewmeister-code-challenge/assets'
 import { IColumn, ISetSort, TSort } from '@crewmeister-code-challenge/types'
 import { sortObject } from '@crewmeister-code-challenge/utility'
+import { StyledActionButton, StyledTable, StyledTableContainer, StyledTaskbar, StyledTd } from 'libs/styles/src/index'
 import { useEffect, useState } from 'react'
 import { TableHeader } from './header'
 import { Pagination } from './pagination/index'
-import { StyledTd } from './styles'
 
 export const Table = ({
   rows,
@@ -50,9 +50,9 @@ export const Table = ({
   }
 
   return (
-    <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
-      <div className="bg-white p-4">{taskbar && taskbar}</div>
-      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 bg-white">
+    <StyledTableContainer>
+      <StyledTaskbar>{taskbar && taskbar}</StyledTaskbar>
+      <StyledTable>
         <TableHeader columns={columns} sortHandler={sortHandler} />
         <tbody>
           {rowsChunk.map((item, index) => {
@@ -66,12 +66,9 @@ export const Table = ({
                   return <td>{record!}</td>
                 })}
                 <StyledTd>
-                  <button
-                    onClick={() => detailsHandler(item)}
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline hover:cursor-pointer"
-                  >
+                  <StyledActionButton onClick={() => detailsHandler(item)}>
                     <PersonDetails />
-                  </button>
+                  </StyledActionButton>
                 </StyledTd>
               </tr>
             )
@@ -84,7 +81,7 @@ export const Table = ({
           total={rows.length}
           onPageChange={setCurrentPage}
         />
-      </table>
-    </div>
+      </StyledTable>
+    </StyledTableContainer>
   )
 }

@@ -23,6 +23,7 @@
     "paths": {
       "@crewmeister-code-challenge/assets": ["libs/assets/src/index.ts"],
       "@crewmeister-code-challenge/services": ["libs/services/src/index.ts"],
+      "@crewmeister-code-challenge/styles": ["libs/styles/src/index.ts"],
       "@crewmeister-code-challenge/types": ["libs/types/src/index.ts"],
       "@crewmeister-code-challenge/ui-components": ["libs/ui-components/src/index.ts"],
       "@crewmeister-code-challenge/utility": ["libs/utility/src/index.ts"]

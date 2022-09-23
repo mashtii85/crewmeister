@@ -4,6 +4,7 @@
 
 import { Close, Info } from '@crewmeister-code-challenge/assets'
 import { Dispatch, SetStateAction } from 'react'
+import { StyledH5, StyledButton } from 'libs/styles/src/index'
 
 export const OffCanvasHeader = ({ setOpen }: { setOpen: Dispatch<SetStateAction<boolean>> }) => {
   const closeHandler = () => {
@@ -11,23 +12,20 @@ export const OffCanvasHeader = ({ setOpen }: { setOpen: Dispatch<SetStateAction<
   }
   return (
     <>
-      <h5
-        id="drawer-label"
-        className="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400"
-      >
+      <StyledH5 id="drawer-label" className="">
         <Info />
         Info
-      </h5>
-      <button
+      </StyledH5>
+      <StyledButton
         type="button"
         onClick={closeHandler}
         data-drawer-dismiss="drawer-example"
         aria-controls="drawer-example"
-        className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+        className=""
       >
         <Close />
         <span className="sr-only">Close menu</span>
-      </button>
+      </StyledButton>
     </>
   )
 }

@@ -2,16 +2,18 @@
  * Table - Pagination - PageInfo
  */
 
+import { StyledPageInfoSpan } from 'libs/styles/src/index'
+
 export const PageInfo = ({ fromPage, toPage, total }: { fromPage: number; toPage: number; total: number }) => {
   return (
     <div>
       <p className="text-sm text-gray-500">
         Showing
-        <span className="font-medium">{` ${fromPage} `}</span>
+        <StyledPageInfoSpan>{` ${fromPage} `}</StyledPageInfoSpan>
         to
-        <span className="font-medium">{` ${toPage} `}</span>
+        <StyledPageInfoSpan>{` ${toPage} `}</StyledPageInfoSpan>
         of
-        <span className="font-medium">{` ${total} `}</span>
+        <StyledPageInfoSpan className="font-medium">{` ${total} `}</StyledPageInfoSpan>
         results
       </p>
     </div>
