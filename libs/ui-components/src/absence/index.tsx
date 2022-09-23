@@ -21,6 +21,7 @@ import { Table } from '../table'
 import { prepareRows } from './helpers/prepare_rows'
 import { AbsenceTaskbar } from './taskbar'
 import { Loading } from '../loading'
+import { DayValue } from '@hassanmojab/react-modern-calendar-datepicker'
 
 export const Absence = () => {
   const service = new AbsencesService()
@@ -37,11 +38,18 @@ export const Absence = () => {
 
   const [openCanvas, setOpenCanvas] = useState<boolean>(false)
   const [selectedAbsence, setSelectedAbsence] = useState<Partial<IAbsence>>({})
+  const [day, setDay] = useState<DayValue>(null)
 
   const handleDetails = (row: IAbsence) => {
     setOpenCanvas(true)
     setSelectedAbsence(row)
   }
+
+  useEffect(() => {
+    const selectedDay = new Date(`${day?.month}-${day?.day}-${day?.year}`)
+    selectedDay.setHours(0, 0, 0, 0)
+    console.log('day=>', selectedDay)
+  }, [day])
 
   if (isLoading) {
     return <Loading />
@@ -83,7 +91,7 @@ export const Absence = () => {
         rows={prepareRows({ absenceList: list, members: members })}
         columns={tableColumns}
         detailsHandler={handleDetails}
-        taskbar={<AbsenceTaskbar onChange={typeChangeHandler} />}
+        taskbar={<AbsenceTaskbar onChangeType={typeChangeHandler} day={day} setDay={setDay} />}
       />
     </>
   )

@@ -35,6 +35,7 @@ export interface IAbsenceViewModel {
   memberNote?: string
   admitterNote?: string
   image: string
+  timeSpan:string
 }
 
 export interface IAbsenceDetails {

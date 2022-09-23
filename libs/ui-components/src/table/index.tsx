@@ -65,7 +65,7 @@ export const Table = ({
         <tbody>
           {rowsChunk.map((item, index) => {
             return (
-              <StyledTr key={item['id']} bgColor={index % 2 === 0 ? 'white' : 'gray'}>
+              <StyledTr key={item['id']} bgcolor={index % 2 === 0 ? 'white' : 'gray'}>
                 <StyledTd>{slice + index + 1}</StyledTd>
                 {Object.values(item).map((row, rowIndex) => {
                   const column = columns[rowIndex]

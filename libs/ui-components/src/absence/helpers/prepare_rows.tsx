@@ -22,6 +22,7 @@ export const prepareRows = ({
       name: member?.name ?? '',
       type: absence.type,
       period: DateDiffInDays(absence?.startDate ?? '0', absence?.endDate ?? '0', { showDay: true }),
+      timeSpan: `${absence.startDate} to ${absence.endDate}`,
       status: calculateStatus({ confirmed: absence.rejectedAt, rejected: absence.confirmedAt }),
       startDate: absence.startDate,
       endDate: absence.endDate,

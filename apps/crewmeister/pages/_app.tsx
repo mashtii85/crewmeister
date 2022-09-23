@@ -8,6 +8,7 @@ import Head from 'next/head'
 
 //Styles
 import './styles.css'
+import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css'
 
 //ReactQuery
 import { QueryClient, QueryClientProvider } from 'react-query'

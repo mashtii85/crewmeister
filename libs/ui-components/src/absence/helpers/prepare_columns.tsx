@@ -34,6 +34,10 @@ export const tableColumns: IColumn<IAbsenceViewModel>[] = [
   },
   {
     hidden: false,
+    text: 'Time Span'
+  },
+  {
+    hidden: false,
     text: 'Status',
     formatter({ row }) {
       switch (row.status) {
