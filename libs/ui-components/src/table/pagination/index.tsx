@@ -28,11 +28,11 @@ export const Pagination = ({
 }) => {
   const pageCount = Math.ceil(total / limit)
   const pages = range(1, pageCount)
-  const toPage = currentPage * limit > total ? total : currentPage * limit
+  const toPage = total > 10 ? (currentPage * limit > total ? total : currentPage * limit) : total
   const fromPage = (currentPage - 1) * limit + 1
 
   return (
-    <tfoot className="w-full border-b bg-gray-800 text-sm font-medium text-white px-6 py-4 shadow-md sm:rounded-lg">
+    <tfoot className="w-full border-b dark: bg-white text-sm font-medium text-white px-6 py-4 shadow-md sm:rounded-lg">
       <tr>
         <td className="p-3" colSpan={columnLength}>
           <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">

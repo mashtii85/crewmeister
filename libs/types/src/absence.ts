@@ -2,9 +2,12 @@
  * IAbsence.d
  */
 
-export type TAbsenceType = 'SICKNESS' | 'VACINATION' | 'VACATION'
-
+export enum AbsenceType {
+  SICKNESS = 'sickness',
+  VACACTION = 'vacation'
+}
 export type TAbsenceStatus = 'REQUESTED' | 'REJECTED' | 'CONFIRMED'
+
 export interface IAbsence {
   admitterId?: number
   admitterNote?: string
@@ -16,7 +19,7 @@ export interface IAbsence {
   memberNote: string
   rejectedAt?: string
   startDate: string
-  type: TAbsenceType
+  type: AbsenceType
   userId: number
 }
 
@@ -24,7 +27,7 @@ export interface IAbsenceViewModel {
   id: number
   userId: number
   name: string
-  type: TAbsenceType
+  type: AbsenceType
   period: string
   status: TAbsenceStatus
   startDate: string
@@ -37,7 +40,7 @@ export interface IAbsenceViewModel {
 export interface IAbsenceDetails {
   id: number
   name: string
-  type: TAbsenceType
+  type: AbsenceType
   period: string
   status: TAbsenceStatus
   addmitterNode?: string

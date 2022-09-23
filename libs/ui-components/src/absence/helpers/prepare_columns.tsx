@@ -9,10 +9,7 @@ export const tableColumns: IColumn<IAbsenceViewModel>[] = [
     hidden: true,
     text: 'id'
   },
-  {
-    hidden: true,
-    text: 'image'
-  },
+
   {
     hidden: true,
     text: 'userId'
@@ -53,5 +50,9 @@ export const tableColumns: IColumn<IAbsenceViewModel>[] = [
   {
     hidden: true,
     text: 'Admitter Note'
+  },
+  {
+    hidden: true,
+    text: 'image'
   }
 ]

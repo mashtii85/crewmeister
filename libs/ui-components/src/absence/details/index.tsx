@@ -2,11 +2,10 @@
  *
  */
 
-import { IAbsence, IAbsenceDetails, IAbsenceViewModel } from '@crewmeister-code-challenge/types'
+import { IAbsenceViewModel } from '@crewmeister-code-challenge/types'
 import { DateDiffInDays } from '@crewmeister-code-challenge/utility'
 import { useContext } from 'react'
 import { MemberContext } from '../../members/index'
-import { calculateStatus } from '../helpers/status'
 
 export const AbsenceDetails = ({ absence }: { absence: Partial<IAbsenceViewModel> }) => {
   const { members } = useContext(MemberContext)
@@ -14,7 +13,6 @@ export const AbsenceDetails = ({ absence }: { absence: Partial<IAbsenceViewModel
   const member = members.find((item) => item.userId === absence.userId)
   const days =
     absence.startDate && absence.endDate ? DateDiffInDays(absence.startDate!, absence.endDate!, { showDay: true }) : 0
-  console.log('image:', absence.image)
   // const status = calculateStatus({ confirmed: absence.rejectedAt, rejected: absence.confirmedAt })
   return (
     <div className="overflow-hidden bg-white shadow sm:rounded-lg">

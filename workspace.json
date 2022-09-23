@@ -3,7 +3,6 @@
   "version": 2,
   "projects": {
     "assets": "libs/assets",
-    "constants": "libs/constants",
     "crewmeister": "apps/crewmeister",
     "crewmeister-e2e": "apps/crewmeister-e2e",
     "services": "libs/services",

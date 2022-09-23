@@ -6,9 +6,9 @@ import { BarsArrowDown, BarsArrowUp, Cog } from '@crewmeister-code-challenge/ass
 import { ITableHeader } from '@crewmeister-code-challenge/types'
 import { StyledHeader } from './styles'
 
-export const TableHealder = ({ columns, sortHandler }: ITableHeader) => {
+export const TableHeader = ({ columns, sortHandler }: ITableHeader) => {
   return (
-    <thead className="text-xs text-white uppercase  dark:bg-gray-700 dark:text-gray-400 bg-gray-800">
+    <thead className="text-xs text-white uppercase  dark: bg-gray-400 dark:text-gray-400 ">
       <tr>
         <th scope="col" className="py-3 px-3">
           <StyledHeader>#</StyledHeader>
@@ -16,7 +16,7 @@ export const TableHealder = ({ columns, sortHandler }: ITableHeader) => {
         {columns.map((column, index) => {
           if (column.hidden) return null
           return (
-            <th key={index} scope="col" className="py-3 px-6">
+            <th key={index} scope="col" className="py-3">
               <div className="flex items-center">
                 {column?.sortable && (
                   <div className="pr-3">
