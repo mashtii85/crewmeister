@@ -3,6 +3,7 @@
  */
 
 import { IAbsenceViewModel, IColumn } from '@crewmeister-code-challenge/type'
+import { Badge } from '../../badge'
 
 export const tableColumns: IColumn<IAbsenceViewModel>[] = [
   {
@@ -23,7 +24,7 @@ export const tableColumns: IColumn<IAbsenceViewModel>[] = [
     hidden: false,
     text: 'Type',
     formatter({ row }) {
-      return row
+      return row.type
     },
     sortable: true
   },
@@ -33,7 +34,20 @@ export const tableColumns: IColumn<IAbsenceViewModel>[] = [
   },
   {
     hidden: false,
-    text: 'Status'
+    text: 'Status',
+    formatter({ row }) {
+      switch (row.status) {
+        case 'CONFIRMED': {
+          return <Badge color="green">{row.status}</Badge>
+        }
+        case 'REJECTED': {
+          return <Badge color="red">{row.status}</Badge>
+        }
+        case 'REQUESTED': {
+          return <Badge color="yellow">{row.status}</Badge>
+        }
+      }
+    }
   },
   {
     hidden: true,

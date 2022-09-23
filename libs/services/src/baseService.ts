@@ -4,6 +4,7 @@
 
 // Types
 import { IBaseModel } from '@crewmeister-code-challenge/type'
+import { timeout } from '@crewmeister-code-challenge/utility'
 
 // Axios
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
@@ -23,9 +24,11 @@ class BaseService {
   public async readJsonFile<T>(fileName: string): Promise<IBaseModel<T>> {
     const response = import('./db/' + fileName + '.json')
 
+    await timeout(500)
     return new Promise((resolve) => resolve(response))
       .then((data: any) => {
         // console.log('data', data.payload)
+
         return data
       })
       .catch((error) => {

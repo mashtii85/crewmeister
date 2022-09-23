@@ -20,6 +20,7 @@ import { AbsenceDetails } from './details'
 import { Table } from '../table'
 import { prepareRows } from './helpers/prepare_rows'
 import { AbsenceTaskbar } from './taskbar'
+import { Loading } from '../loading'
 
 export const Absence = () => {
   const service = new AbsencesService()
@@ -43,7 +44,7 @@ export const Absence = () => {
   }
 
   if (isLoading) {
-    return <div>loading...</div>
+    return <Loading />
   }
 
   if (error) {

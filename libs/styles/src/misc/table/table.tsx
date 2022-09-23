@@ -40,3 +40,6 @@ flex-col
 export const StyledHeader = tw.div<any>`
 text-sm
 `
+export const StyledTr = tw.tr<any>`
+${({ bgColor }) => `bg-${bgColor}-100`} border-b
+`

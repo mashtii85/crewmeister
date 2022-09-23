@@ -8,7 +8,6 @@ import Head from 'next/head'
 
 //Styles
 import './styles.css'
-import 'react-datepicker/dist/react-datepicker.css'
 
 //ReactQuery
 import { QueryClient, QueryClientProvider } from 'react-query'

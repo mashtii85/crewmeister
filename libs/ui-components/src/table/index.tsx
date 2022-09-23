@@ -10,7 +10,8 @@ import {
   StyledTable,
   StyledTableContainer,
   StyledTaskbar,
-  StyledTd
+  StyledTd,
+  StyledTr
 } from 'libs/styles/src/misc/table'
 import { useEffect, useState } from 'react'
 import tw from 'tailwind-styled-components'
@@ -64,12 +65,12 @@ export const Table = ({
         <tbody>
           {rowsChunk.map((item, index) => {
             return (
-              <tr key={item['id']} className={index % 2 === 0 ? 'bg-white border-b' : 'bg-gray-100 border-b'}>
+              <StyledTr key={item['id']} bgColor={index % 2 === 0 ? 'white' : 'gray'}>
                 <StyledTd>{slice + index + 1}</StyledTd>
                 {Object.values(item).map((row, rowIndex) => {
                   const column = columns[rowIndex]
                   if (column.hidden) return null
-                  const record = column.formatter ? column.formatter({ row }) : row
+                  const record = column.formatter ? column.formatter({ row: item }) : row
                   return <td>{record!}</td>
                 })}
                 <StyledTd>
@@ -77,7 +78,7 @@ export const Table = ({
                     <PersonDetails />
                   </StyledActionButton>
                 </StyledTd>
-              </tr>
+              </StyledTr>
             )
           })}
         </tbody>

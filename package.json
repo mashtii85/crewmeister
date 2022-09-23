@@ -26,7 +26,6 @@
     "react-query": "^3.39.2",
     "regenerator-runtime": "0.13.7",
     "styled-components": "5.3.5",
-    "tailwind-react-datepicker": "^1.1.8",
     "tailwind-styled-components": "^2.2.0",
     "tslib": "^2.3.0"
   },
