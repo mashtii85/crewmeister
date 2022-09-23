@@ -2,7 +2,7 @@
  *
  */
 
-import { IAbsence, IAbsenceViewModel, IMember } from '@crewmeister-code-challenge/types'
+import { IAbsence, IAbsenceViewModel, IMember } from '@crewmeister-code-challenge/type'
 import { DateDiffInDays } from '@crewmeister-code-challenge/utility'
 import { calculateStatus } from './status'
 

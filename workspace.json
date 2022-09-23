@@ -7,7 +7,7 @@
     "crewmeister-e2e": "apps/crewmeister-e2e",
     "services": "libs/services",
     "styles": "libs/styles",
-    "types": "libs/types",
+    "type": "libs/type",
     "ui-components": "libs/ui-components",
     "utility": "libs/utility"
   }

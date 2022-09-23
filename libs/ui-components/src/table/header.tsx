@@ -3,7 +3,7 @@
  */
 
 import { BarsArrowDown, BarsArrowUp, Cog } from '@crewmeister-code-challenge/assets'
-import { ITableHeader } from '@crewmeister-code-challenge/types'
+import { ITableHeader } from '@crewmeister-code-challenge/type'
 import { StyledHeader } from 'libs/styles/src/misc/table'
 import { StyledSortButton, StyledSortContainer, StyledThead } from 'libs/styles/src/misc/table/header'
 

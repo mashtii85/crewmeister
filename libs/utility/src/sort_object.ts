@@ -2,7 +2,7 @@
  * SortObject
  */
 
-import { TSort } from '@crewmeister-code-challenge/types'
+import { TSort } from '@crewmeister-code-challenge/type'
 
 export const sortObject = <T>({ array = [], key, sortType }: { array: T[]; key: string; sortType: TSort }) => {
   if (sortType === 'DES') {

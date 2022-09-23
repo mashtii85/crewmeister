@@ -2,7 +2,7 @@
  * Select
  */
 
-import { ISelect } from '@crewmeister-code-challenge/types'
+import { ISelect } from '@crewmeister-code-challenge/type'
 import { StyledSelect } from 'libs/styles/src/misc/select'
 import { ChangeEventHandler } from 'react'
 

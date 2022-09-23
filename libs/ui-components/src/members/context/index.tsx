@@ -3,7 +3,7 @@
  */
 
 import { MembersService } from '@crewmeister-code-challenge/services'
-import { IMember } from '@crewmeister-code-challenge/types'
+import { IMember } from '@crewmeister-code-challenge/type'
 import { createContext } from 'react'
 import { useQuery } from 'react-query'
 

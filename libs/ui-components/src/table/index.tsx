@@ -3,7 +3,7 @@
  */
 
 import { PersonDetails } from '@crewmeister-code-challenge/assets'
-import { IColumn, ISetSort, TSort } from '@crewmeister-code-challenge/types'
+import { IColumn, ISetSort, TSort } from '@crewmeister-code-challenge/type'
 import { sortObject } from '@crewmeister-code-challenge/utility'
 import {
   StyledActionButton,

@@ -2,7 +2,7 @@
  *
  */
 
-import { IAbsenceViewModel } from '@crewmeister-code-challenge/types'
+import { IAbsenceViewModel } from '@crewmeister-code-challenge/type'
 import { DateDiffInDays } from '@crewmeister-code-challenge/utility'
 import { useContext } from 'react'
 import { MemberContext } from '../../members/index'

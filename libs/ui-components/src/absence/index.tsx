@@ -11,16 +11,15 @@ import { useQuery } from 'react-query'
 
 import { useContext, useEffect, useState } from 'react'
 
-import { tableColumns } from './helpers/index'
-import { IAbsence } from '@crewmeister-code-challenge/types'
+import { tableColumns } from './helpers'
+import { IAbsence, AbsenceType } from '@crewmeister-code-challenge/type'
 import { MemberContext } from '../members/context'
 import { AbsencesService } from '@crewmeister-code-challenge/services'
-import { OffCanvas } from '../off_canvas/index'
-import { AbsenceDetails } from './details/index'
-import { Table } from '../table/index'
+import { OffCanvas } from '../off_canvas'
+import { AbsenceDetails } from './details'
+import { Table } from '../table'
 import { prepareRows } from './helpers/prepare_rows'
-import { AbsenceTaskbar } from './taskbar/index'
-import { AbsenceType } from '@crewmeister-code-challenge/types'
+import { AbsenceTaskbar } from './taskbar'
 
 export const Absence = () => {
   const service = new AbsencesService()

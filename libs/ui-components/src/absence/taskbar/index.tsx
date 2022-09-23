@@ -2,10 +2,9 @@
  * Absence - Taskbar
  */
 
-import { AbsenceType } from '@crewmeister-code-challenge/types'
-import { ISelect } from '@crewmeister-code-challenge/types'
+import { AbsenceType, ISelect } from '@crewmeister-code-challenge/type'
 import { Select } from '../../select'
-// import DatePicker from 'tailwind-react-datepicker'
+import DatePicker from 'tailwind-react-datepicker'
 import { useState } from 'react'
 
 export const AbsenceTaskbar = ({ onChange }: { onChange: React.ChangeEventHandler<any> | undefined }) => {
@@ -22,7 +21,7 @@ export const AbsenceTaskbar = ({ onChange }: { onChange: React.ChangeEventHandle
       <Select onChange={onChange} options={absencOptions} />
       <span className="pr-3"></span>
       <Select onChange={onChange} options={absencOptions} />
-      {/* <DatePicker selected={startDate} onChange={(date) => setStartDate(date!)} /> */}
+      <DatePicker selected={startDate} onChange={(date) => setStartDate(date!)} />
     </div>
   )
 }

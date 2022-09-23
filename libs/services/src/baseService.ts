@@ -3,7 +3,7 @@
  */
 
 // Types
-import { IBaseModel } from '@crewmeister-code-challenge/types'
+import { IBaseModel } from '@crewmeister-code-challenge/type'
 
 // Axios
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
