@@ -3,7 +3,7 @@
  */
 
 import { Prev } from '@crewmeister-code-challenge/assets'
-import { StyledBackPaginationButton } from 'libs/styles/src/index'
+import { StyledBackPaginationButton } from 'libs/styles/src/misc/table'
 
 export const BackwardNavigation = ({
   currentPage,

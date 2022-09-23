@@ -3,7 +3,7 @@
  */
 
 import { ISelect } from '@crewmeister-code-challenge/types'
-import { StyledSelect } from 'libs/styles/src/index'
+import { StyledSelect } from 'libs/styles/src/misc/select'
 import { ChangeEventHandler } from 'react'
 
 export const Select = ({

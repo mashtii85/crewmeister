@@ -2,7 +2,7 @@
  * Table - Pagination - PageInfo
  */
 
-import { StyledPageInfoSpan } from 'libs/styles/src/index'
+import { StyledPageInfoSpan } from 'libs/styles/src/misc/table'
 
 export const PageInfo = ({ fromPage, toPage, total }: { fromPage: number; toPage: number; total: number }) => {
   return (

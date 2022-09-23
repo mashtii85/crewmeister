@@ -10,6 +10,6 @@ export const StyledThead = tw.thead<any>`
 export const StyledSortContainer = tw.div<any>`
  flex items-center
  `
-export const StyledSortButton = tw.button<any>`
+export const StyledSortButton = tw.a<any>`
  hover:cursor-pointer
  `

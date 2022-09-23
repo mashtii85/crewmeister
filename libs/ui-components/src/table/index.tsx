@@ -5,8 +5,15 @@
 import { PersonDetails } from '@crewmeister-code-challenge/assets'
 import { IColumn, ISetSort, TSort } from '@crewmeister-code-challenge/types'
 import { sortObject } from '@crewmeister-code-challenge/utility'
-import { StyledActionButton, StyledTable, StyledTableContainer, StyledTaskbar, StyledTd } from 'libs/styles/src/index'
+import {
+  StyledActionButton,
+  StyledTable,
+  StyledTableContainer,
+  StyledTaskbar,
+  StyledTd
+} from 'libs/styles/src/misc/table'
 import { useEffect, useState } from 'react'
+import tw from 'tailwind-styled-components'
 import { TableHeader } from './header'
 import { Pagination } from './pagination/index'
 
@@ -20,7 +27,7 @@ export const Table = ({
   rows: any[]
   columns: IColumn<any>[]
   isLoading?: boolean
-  detailsHandler?: (row: any) => void
+  detailsHandler: (row: any) => void
   taskbar?: JSX.Element | JSX.Element[]
 }) => {
   const pageLimit = 10

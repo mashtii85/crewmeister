@@ -2,7 +2,7 @@
  * Table - Pagination - Index
  */
 
-import { StyledPaginationContent, StyledPaginationNav, StyledTfoot } from 'libs/styles/src/index'
+import { StyledPaginationContent, StyledPaginationNav, StyledTfoot } from 'libs/styles/src/misc/table'
 import { BackwardNavigation } from './backwardNavigation'
 import { ForwardNavigation } from './forwardNavigation'
 import { PaginationItem } from './item'

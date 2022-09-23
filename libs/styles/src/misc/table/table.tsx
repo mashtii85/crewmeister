@@ -10,7 +10,7 @@ export const StyledTableContainer = tw.div<any>`
 export const StyledTaskbar = tw.div<any>`
  bg-white p-4
  `
-export const StyledTable = tw.div<any>`
+export const StyledTable = tw.table<any>`
  w-full text-sm text-left text-gray-500 dark:text-gray-400 bg-white
  `
 export const StyledActionButton = tw.button<any>`
@@ -33,10 +33,10 @@ px-6
 py-4
 `
 
-export const StyledFlex = tw.div`
+export const StyledFlex = tw.div<any>`
 flex
 flex-col
 `
-export const StyledHeader = tw.div`
+export const StyledHeader = tw.div<any>`
 text-sm
 `

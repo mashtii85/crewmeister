@@ -19,7 +19,8 @@ import {
   StyledImageContainer,
   StyledP,
   StyledWhiteDescription
-} from 'libs/styles/src/index'
+} from 'libs/styles/src/absence'
+
 export const AbsenceDetails = ({ absence }: { absence: Partial<IAbsenceViewModel> }) => {
   const { members } = useContext(MemberContext)
 

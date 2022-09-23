@@ -4,7 +4,7 @@
 
 import { Close, Info } from '@crewmeister-code-challenge/assets'
 import { Dispatch, SetStateAction } from 'react'
-import { StyledH5, StyledButton } from 'libs/styles/src/index'
+import { StyledH5, StyledButton } from 'libs/styles/src/misc/off_canvas'
 
 export const OffCanvasHeader = ({ setOpen }: { setOpen: Dispatch<SetStateAction<boolean>> }) => {
   const closeHandler = () => {

@@ -3,7 +3,7 @@
  */
 
 import { Next } from '@crewmeister-code-challenge/assets'
-import { StyledNextPaginationButton } from 'libs/styles/src/index'
+import { StyledNextPaginationButton } from 'libs/styles/src/misc/table'
 
 export const ForwardNavigation = ({
   isLastPage,
