@@ -5,9 +5,11 @@
 import { AbsenceType } from '@crewmeister-code-challenge/types'
 import { ISelect } from '@crewmeister-code-challenge/types'
 import { Select } from '../../select'
-import DatePicker from '@syncfusion/ej2-react-calendars'
+import DatePicker from 'react-datepicker'
+import { useState } from 'react'
 
 export const AbsenceTaskbar = ({ onChange }: { onChange: React.ChangeEventHandler<any> | undefined }) => {
+  const [startDate, setStartDate] = useState(new Date())
   const absencOptions: ISelect[] = [
     { key: 'none', value: 'Absence Type/None' },
     { key: AbsenceType.SICKNESS, value: AbsenceType.SICKNESS.toLocaleUpperCase() },
@@ -20,7 +22,7 @@ export const AbsenceTaskbar = ({ onChange }: { onChange: React.ChangeEventHandle
       <Select onChange={onChange} options={absencOptions} />
       <span className="pr-3"></span>
       <Select onChange={onChange} options={absencOptions} />
-      <DatePicker />
+      <DatePicker selected={startDate} onChange={(date) => setStartDate(date!)} />
     </div>
   )
 }

@@ -5,6 +5,7 @@
 import { IAbsenceViewModel } from '@crewmeister-code-challenge/types'
 import { DateDiffInDays } from '@crewmeister-code-challenge/utility'
 import { useContext } from 'react'
+import tw from 'tailwind-styled-components'
 import { MemberContext } from '../../members/index'
 
 export const AbsenceDetails = ({ absence }: { absence: Partial<IAbsenceViewModel> }) => {
@@ -15,50 +16,89 @@ export const AbsenceDetails = ({ absence }: { absence: Partial<IAbsenceViewModel
     absence.startDate && absence.endDate ? DateDiffInDays(absence.startDate!, absence.endDate!, { showDay: true }) : 0
   // const status = calculateStatus({ confirmed: absence.rejectedAt, rejected: absence.confirmedAt })
   return (
-    <div className="overflow-hidden bg-white shadow sm:rounded-lg">
-      <span className="flex  p-5 content-center items-center">
-        <img src={`${absence.image}?lock=1`} alt="" className=" w-20 h-20 rounded-full" />
-      </span>
-      <div className="px-4 py-5 sm:px-6">
-        <h3 className="text-lg font-medium leading-6 text-gray-900"></h3>
-        <p className="mt-1 max-w-2xl text-sm text-gray-500">{member?.name}'s Absence Details</p>
-      </div>
+    <StyledContainer>
+      <StyledImageContainer>
+        <StyledImage src={`${absence.image}?lock=1`} alt="" className=" w-20 h-20 rounded-full" />
+      </StyledImageContainer>
+      <StyledHeaderContainer>
+        <StyledH3>
+          <StyledP>{member?.name}'s Absence Details</StyledP>
+        </StyledH3>
+      </StyledHeaderContainer>
 
-      <div className="border-t border-gray-200">
+      <StyledContent>
         <dl>
-          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Absence Type</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{absence.type}</dd>
-          </div>
+          <StyledGrayDescription>
+            <StyledDt>Absence Type</StyledDt>
+            <StyledDd>{absence.type}</StyledDd>
+          </StyledGrayDescription>
 
-          <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Period</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+          <StyledWhiteDescription>
+            <StyledDt>Period</StyledDt>
+            <StyledDd>
               {absence.startDate} - {absence.endDate}
-            </dd>
-          </div>
-          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Total Days</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{days}</dd>
-          </div>
-          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-            <dt className="text-sm font-medium text-gray-500">Status</dt>
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{absence.status}</dd>
-          </div>
+            </StyledDd>
+          </StyledWhiteDescription>
+          <StyledGrayDescription>
+            <StyledDt>Total Days</StyledDt>
+            <StyledDd>{days}</StyledDd>
+          </StyledGrayDescription>
+          <StyledGrayDescription>
+            <StyledDt>Status</StyledDt>
+            <StyledDd>{absence.status}</StyledDd>
+          </StyledGrayDescription>
           {absence.memberNote && (
-            <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">Member Note</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{absence.memberNote}</dd>
-            </div>
+            <StyledWhiteDescription>
+              <StyledDt>Member Note</StyledDt>
+              <StyledDd>{absence.memberNote}</StyledDd>
+            </StyledWhiteDescription>
           )}
           {absence.admitterNote && (
-            <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt className="text-sm font-medium text-gray-500">Member Note</dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{absence.admitterNote}</dd>
-            </div>
+            <StyledWhiteDescription>
+              <StyledDt>Member Note</StyledDt>
+              <StyledDd>{absence.admitterNote}</StyledDd>
+            </StyledWhiteDescription>
           )}
         </dl>
-      </div>
-    </div>
+      </StyledContent>
+    </StyledContainer>
   )
 }
+
+const StyledContainer = tw.div<any>`
+overflow-hidden bg-white shadow sm:rounded-lg
+`
+const StyledImageContainer = tw.div<any>`
+flex  p-5 content-center items-center`
+
+const StyledHeaderContainer = tw.div<any>`
+px-4 py-5 sm:px-6
+`
+
+export const StyledImage = tw.img<any>`
+w-20 h-20 rounded-full
+`
+export const StyledH3 = tw.div<any>`
+text-lg font-medium leading-6 text-gray-900
+`
+
+export const StyledContent = tw.div<any>`
+border-t border-gray-200
+`
+export const StyledGrayDescription = tw.div<any>`
+bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6
+`
+
+export const StyledDt = tw.dt<any>`
+text-sm font-medium text-gray-500
+`
+export const StyledDd = tw.dd<any>`
+mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0
+`
+
+export const StyledP = tw.p<any>`
+mt-1 max-w-2xl text-sm text-gray-500
+`
+export const StyledWhiteDescription = tw.div<any>`
+bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6
+`

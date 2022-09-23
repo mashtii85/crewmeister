@@ -20,7 +20,7 @@ export const Table = ({
   rows: any[]
   columns: IColumn<any>[]
   isLoading?: boolean
-  detailsHandler?: (props: any) => void
+  detailsHandler?: (row: any) => void
   taskbar?: JSX.Element | JSX.Element[]
 }) => {
   const pageLimit = 10
@@ -66,12 +66,12 @@ export const Table = ({
                   return <td>{record!}</td>
                 })}
                 <StyledTd>
-                  <a
+                  <button
                     onClick={() => detailsHandler(item)}
                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline hover:cursor-pointer"
                   >
                     <PersonDetails />
-                  </a>
+                  </button>
                 </StyledTd>
               </tr>
             )

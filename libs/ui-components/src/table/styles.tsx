@@ -4,7 +4,7 @@
 
 import tw from 'tailwind-styled-components'
 
-export const StyledTd = tw.td`
+export const StyledTd = tw.td<any>`
  px-6
  py-4
  whitespace-nowrap
@@ -12,7 +12,7 @@ export const StyledTd = tw.td`
  font-medium
  text-gray-900
 `
-export const StyledTh = tw.th`
+export const StyledTh = tw.th<any>`
  text-sm
  font-medium
  text-white

@@ -22,7 +22,7 @@ export const Select = ({
   )
 }
 
-const StyledSelect = tw.select`
+const StyledSelect = tw.select<any>`
   form-select form-select-sm mb-3
   px-4
   py-2
