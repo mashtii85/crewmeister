@@ -31,9 +31,7 @@ export const Absence = () => {
   const [list, setList] = useState<IAbsence[]>([])
 
   useEffect(() => {
-    // if (!isLoading) {
     setList(data?.payload ?? [])
-    // }
   }, [isLoading])
 
   const [openCanvas, setOpenCanvas] = useState<boolean>(false)
@@ -46,9 +44,9 @@ export const Absence = () => {
   }
 
   useEffect(() => {
-    const selectedDay = new Date(`${day?.month}-${day?.day}-${day?.year}`)
-    selectedDay.setHours(0, 0, 0, 0)
-    console.log('day=>', selectedDay)
+    const list = service.filterByDate(data?.payload, day)
+
+    setList(list ?? [])
   }, [day])
 
   if (isLoading) {
@@ -61,25 +59,12 @@ export const Absence = () => {
   }
 
   const typeChangeHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const type: AbsenceType = event.target.value as AbsenceType
-    switch (type) {
-      case AbsenceType.SICKNESS: {
-        const listByType = data?.payload.filter((item) => item.type === AbsenceType.SICKNESS)
-        setList(listByType ?? [])
+    const list = service.filterByType(data?.payload, event)
+    setList(list)
+  }
 
-        break
-      }
-
-      case AbsenceType.VACACTION: {
-        const listByType = data?.payload.filter((item) => item.type === AbsenceType.VACACTION)
-        setList(listByType ?? [])
-        break
-      }
-      default: {
-        setList(data?.payload ?? [])
-        break
-      }
-    }
+  const resetDateFilter = () => {
+    setDay(null)
   }
 
   return (
@@ -91,7 +76,14 @@ export const Absence = () => {
         rows={prepareRows({ absenceList: list, members: members })}
         columns={tableColumns}
         detailsHandler={handleDetails}
-        taskbar={<AbsenceTaskbar onChangeType={typeChangeHandler} day={day} setDay={setDay} />}
+        taskbar={
+          <AbsenceTaskbar
+            onChangeType={typeChangeHandler}
+            day={day}
+            setDay={setDay}
+            resetDateFilterHandler={resetDateFilter}
+          />
+        }
       />
     </>
   )

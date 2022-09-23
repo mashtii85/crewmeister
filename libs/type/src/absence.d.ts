@@ -3,6 +3,7 @@
  */
 
 export enum AbsenceType {
+  DEFAULT = 'Absence Type',
   SICKNESS = 'sickness',
   VACACTION = 'vacation'
 }
@@ -35,7 +36,7 @@ export interface IAbsenceViewModel {
   memberNote?: string
   admitterNote?: string
   image: string
-  timeSpan:string
+  timeSpan: string
 }
 
 export interface IAbsenceDetails {

@@ -7,6 +7,7 @@ import { IColumn, ISetSort, TSort } from '@crewmeister-code-challenge/type'
 import { sortObject } from '@crewmeister-code-challenge/utility'
 import {
   StyledActionButton,
+  StyledEmptyTd,
   StyledTable,
   StyledTableContainer,
   StyledTaskbar,
@@ -14,7 +15,6 @@ import {
   StyledTr
 } from 'libs/styles/src/misc/table'
 import { useEffect, useState } from 'react'
-import tw from 'tailwind-styled-components'
 import { TableHeader } from './header'
 import { Pagination } from './pagination/index'
 
@@ -39,7 +39,6 @@ export const Table = ({
 
   useEffect(() => {
     setCurrentPage(1)
-    console.log('len', rows.length)
   }, [rows.length])
 
   useEffect(() => {
@@ -49,7 +48,6 @@ export const Table = ({
       const key = Object.keys(rows[0])[sort.columnIndex].toString()
       sortObject<any>({ array: chunk, key, sortType: sort.sortType })
     }
-    console.log('chunk', rows.length)
     setRowsChunk(chunk)
   }, [currentPage, sort, rows.length])
 
@@ -63,24 +61,28 @@ export const Table = ({
       <StyledTable>
         <TableHeader columns={columns} sortHandler={sortHandler} />
         <tbody>
-          {rowsChunk.map((item, index) => {
-            return (
-              <StyledTr key={item['id']} bgcolor={index % 2 === 0 ? 'white' : 'gray'}>
-                <StyledTd>{slice + index + 1}</StyledTd>
-                {Object.values(item).map((row, rowIndex) => {
-                  const column = columns[rowIndex]
-                  if (column.hidden) return null
-                  const record = column.formatter ? column.formatter({ row: item }) : row
-                  return <td>{record!}</td>
-                })}
-                <StyledTd>
-                  <StyledActionButton onClick={() => detailsHandler(item)}>
-                    <PersonDetails />
-                  </StyledActionButton>
-                </StyledTd>
-              </StyledTr>
-            )
-          })}
+          {rowsChunk.length === 0 ? (
+            <StyledEmptyTd colSpan={columns.length + 1}>Nothing to show</StyledEmptyTd>
+          ) : (
+            rowsChunk.map((item, index) => {
+              return (
+                <StyledTr key={item['id']} bgcolor={index % 2 === 0 ? 'white' : 'gray'}>
+                  <StyledTd>{slice + index + 1}</StyledTd>
+                  {Object.values(item).map((row, rowIndex) => {
+                    const column = columns[rowIndex]
+                    if (column.hidden) return null
+                    const record = column.formatter ? column.formatter({ row: item }) : row
+                    return <td>{record!}</td>
+                  })}
+                  <StyledTd>
+                    <StyledActionButton onClick={() => detailsHandler(item)}>
+                      <PersonDetails />
+                    </StyledActionButton>
+                  </StyledTd>
+                </StyledTr>
+              )
+            })
+          )}
         </tbody>
         <Pagination
           currentPage={currentPage}

@@ -14,7 +14,7 @@ export const Select = ({
   onChange: ChangeEventHandler<any> | undefined
 }) => {
   return (
-    <StyledSelect onChange={onChange} id="countries">
+    <StyledSelect onChange={onChange}>
       {options.map((item) => {
         return <option value={item.key}>{item.value}</option>
       })}

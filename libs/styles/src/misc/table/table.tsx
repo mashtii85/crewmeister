@@ -8,7 +8,7 @@ export const StyledTableContainer = tw.div<any>`
  overflow-x-auto relative shadow-md sm:rounded-lg
  `
 export const StyledTaskbar = tw.div<any>`
- bg-white p-4
+ bg-gray-200 p-4
  `
 export const StyledTable = tw.table<any>`
  w-full text-sm text-left text-gray-500 dark:text-gray-400 bg-white
@@ -43,3 +43,6 @@ text-sm
 export const StyledTr = tw.tr<any>`
 ${({ bgcolor }) => `bg-${bgcolor}-100`} border-b
 `
+
+export const StyledEmptyTd = tw.td<any>`
+h-[40rem]  bg-slate-200 flex-1 p-3 content-center text-center text-2xl text-gray-400`
