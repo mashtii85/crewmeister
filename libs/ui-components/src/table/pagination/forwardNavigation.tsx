@@ -16,7 +16,7 @@ export const ForwardNavigation = ({
 }) => {
   if (isLastPage) {
     return (
-      <StyledNextPaginationButton onClick={() => onPageChange(currentPage + 1)} className="">
+      <StyledNextPaginationButton data-cy="nav-forward" onClick={() => onPageChange(currentPage + 1)}>
         <span className="sr-only">Next</span>
         <Next />
       </StyledNextPaginationButton>

@@ -22,10 +22,13 @@ import { prepareRows } from './helpers/prepare_rows'
 import { AbsenceTaskbar } from './taskbar'
 import { Loading } from '../loading'
 import { DayValue } from '@hassanmojab/react-modern-calendar-datepicker'
+// import { OffCanvasContext, OffCanvaseProvider } from '../app/offcanvas_provider'
 
 export const Absence = () => {
   const service = new AbsencesService()
   const { members } = useContext(MemberContext)
+  // const { open, setOpen, Elements } = useContext(OffCanvasContext)
+
   const { data, error, isLoading } = useQuery('absence-list', service.get)
 
   const [list, setList] = useState<IAbsence[]>([])
@@ -40,6 +43,7 @@ export const Absence = () => {
 
   const handleDetails = (row: IAbsence) => {
     setOpenCanvas(true)
+    // setOpen(true)
     setSelectedAbsence(row)
   }
 
@@ -68,7 +72,7 @@ export const Absence = () => {
   }
 
   return (
-    <>
+    <div className="pt-10 pb-10">
       <OffCanvas open={openCanvas} setOpen={setOpenCanvas}>
         <AbsenceDetails absence={selectedAbsence} />
       </OffCanvas>
@@ -85,6 +89,6 @@ export const Absence = () => {
           />
         }
       />
-    </>
+    </div>
   )
 }

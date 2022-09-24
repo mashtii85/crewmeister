@@ -10,7 +10,8 @@
       "files": ["src/plugins/index.js"],
       "rules": {
         "@typescript-eslint/no-var-requires": "off",
-        "no-undef": "off"
+        "no-undef": "off",
+        "cypress/no-unnecessary-waiting": "off"
       }
     }
   ]

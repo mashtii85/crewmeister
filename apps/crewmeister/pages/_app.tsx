@@ -22,7 +22,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Welcome to crewmeister!</title>
       </Head>
-      <main className="app">
+      <main className="app md:container md:mx-auto">
         <MemberProvider>
           <Component {...pageProps} />
         </MemberProvider>

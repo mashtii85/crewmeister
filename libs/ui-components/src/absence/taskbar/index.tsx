@@ -25,9 +25,9 @@ export const AbsenceTaskbar = ({
   ]
 
   return (
-    <div>
+    <div data-cy="task-bar">
       <div className="pb-3 text-lg">Filters</div>
-      <Select onChange={onChangeType} options={absencOptions} />
+      <Select data-cy="type-select" onChange={onChangeType} options={absencOptions} />
       <span className="pr-3" />
       <DatePicker day={day} setDay={setDay} />
       <span className="pr-3" />

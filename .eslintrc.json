@@ -18,7 +18,8 @@
               }
             ]
           }
-        ]
+        ],
+        "cypress/no-unnecessary-waiting": "off"
       }
     },
     {

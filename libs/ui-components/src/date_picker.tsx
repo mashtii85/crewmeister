@@ -18,6 +18,7 @@ export const DatePicker = ({
       onChange={(value) => {
         setDay(value)
       }}
+      calendarClassName="z-0"
       inputPlaceholder="Select a date"
       inputClassName={datePickerStyles.inputClassName}
       shouldHighlightWeekends

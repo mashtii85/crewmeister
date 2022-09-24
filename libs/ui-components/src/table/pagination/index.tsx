@@ -34,7 +34,7 @@ export const Pagination = ({
   return (
     <StyledTfoot>
       <tr>
-        <td className="p-3" colSpan={columnLength}>
+        <td data-cy="table-pagination" className="p-3" colSpan={columnLength}>
           <StyledPaginationContent>
             <PageInfo fromPage={fromPage} toPage={toPage} total={total} />
             <div>

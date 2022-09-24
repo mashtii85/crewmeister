@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
+    "e2e": "nx e2e crewmeister-e2e --watch",
     "build": "nx build",
     "test": "nx test"
   },
@@ -33,7 +34,7 @@
   },
   "devDependencies": {
     "@nrwl/cli": "14.7.5",
-    "@nrwl/cypress": "14.7.5",
+    "@nrwl/cypress": "^14.7.5",
     "@nrwl/eslint-plugin-nx": "14.7.5",
     "@nrwl/jest": "14.7.5",
     "@nrwl/linter": "14.7.5",

@@ -12,16 +12,16 @@ export const OffCanvasHeader = ({ setOpen }: { setOpen: Dispatch<SetStateAction<
   }
   return (
     <>
-      <StyledH5 id="drawer-label" className="">
+      <StyledH5>
         <Info />
         Info
       </StyledH5>
       <StyledButton
+        data-cy="close-offcanvas"
         type="button"
         onClick={closeHandler}
         data-drawer-dismiss="drawer-example"
         aria-controls="drawer-example"
-        className=""
       >
         <Close />
         <span className="sr-only">Close menu</span>

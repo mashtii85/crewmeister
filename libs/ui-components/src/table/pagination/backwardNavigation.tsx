@@ -14,7 +14,7 @@ export const BackwardNavigation = ({
 }) => {
   if (currentPage > 1) {
     return (
-      <StyledBackPaginationButton onClick={() => onPageChange(currentPage - 1)} className="">
+      <StyledBackPaginationButton data-cy="nav-back" onClick={() => onPageChange(currentPage - 1)}>
         <span className="sr-only">Previous</span>
         <Prev />
       </StyledBackPaginationButton>

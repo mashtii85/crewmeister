@@ -27,7 +27,6 @@ export const AbsenceDetails = ({ absence }: { absence: Partial<IAbsenceViewModel
   const member = members.find((item) => item.userId === absence.userId)
   const days =
     absence.startDate && absence.endDate ? DateDiffInDays(absence.startDate!, absence.endDate!, { showDay: true }) : 0
-  // const status = calculateStatus({ confirmed: absence.rejectedAt, rejected: absence.confirmedAt })
   return (
     <StyledContainer>
       <StyledImageContainer>

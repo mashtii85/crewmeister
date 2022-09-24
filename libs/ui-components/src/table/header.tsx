@@ -17,14 +17,14 @@ export const TableHeader = ({ columns, sortHandler }: ITableHeader) => {
         {columns.map((column, index) => {
           if (column.hidden) return null
           return (
-            <th key={index} scope="col" className="py-3">
+            <th data-cy={`${column.text.toLowerCase()}-header`} key={index} scope="col" className="py-3">
               <StyledSortContainer>
                 {column?.sortable && (
                   <div className="pr-3">
-                    <StyledSortButton onClick={() => sortHandler(index, 'ASC')}>
+                    <StyledSortButton data-cy="asc-sort" onClick={() => sortHandler(index, 'ASC')}>
                       <BarsArrowUp />
                     </StyledSortButton>
-                    <StyledSortButton onClick={() => sortHandler(index, 'DES')}>
+                    <StyledSortButton data-cy="des-sort" onClick={() => sortHandler(index, 'DES')}>
                       <BarsArrowDown />
                     </StyledSortButton>
                   </div>

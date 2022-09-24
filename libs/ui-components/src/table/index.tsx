@@ -42,11 +42,12 @@ export const Table = ({
   }, [rows.length])
 
   useEffect(() => {
-    const chunk = rows.slice(slice, slice + pageLimit)
+    let chunk = rows.slice(slice, slice + pageLimit)
 
     if (sort) {
       const key = Object.keys(rows[0])[sort.columnIndex].toString()
-      sortObject<any>({ array: chunk, key, sortType: sort.sortType })
+      sortObject<any>({ array: rows, key, sortType: sort.sortType })
+      chunk = rows.slice(slice, slice + pageLimit)
     }
     setRowsChunk(chunk)
   }, [currentPage, sort, rows.length])
@@ -56,7 +57,7 @@ export const Table = ({
   }
 
   return (
-    <StyledTableContainer>
+    <StyledTableContainer data-cy="table">
       <StyledTaskbar>{taskbar && taskbar}</StyledTaskbar>
       <StyledTable>
         <TableHeader columns={columns} sortHandler={sortHandler} />
@@ -66,16 +67,16 @@ export const Table = ({
           ) : (
             rowsChunk.map((item, index) => {
               return (
-                <StyledTr key={item['id']} bgcolor={index % 2 === 0 ? 'white' : 'gray'}>
+                <StyledTr data-cy={`tr-${index}`} key={item['id']} bgcolor={index % 2 === 0 ? 'white' : 'gray'}>
                   <StyledTd>{slice + index + 1}</StyledTd>
                   {Object.values(item).map((row, rowIndex) => {
                     const column = columns[rowIndex]
                     if (column.hidden) return null
                     const record = column.formatter ? column.formatter({ row: item }) : row
-                    return <td>{record!}</td>
+                    return <td data-cy={`td-${rowIndex}`}>{record!}</td>
                   })}
                   <StyledTd>
-                    <StyledActionButton onClick={() => detailsHandler(item)}>
+                    <StyledActionButton data-cy={`show-action-${index}`} onClick={() => detailsHandler(item)}>
                       <PersonDetails />
                     </StyledActionButton>
                   </StyledTd>
