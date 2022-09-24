@@ -83,6 +83,14 @@ Old days when we want to create a nextjs app or create react app or any other re
 utilies:
 If we want to have a helper to let a currency, comma separated, then the comma-separated function is a utility and it would lives in this library. So any utility lives in this library.
 
+## Components
+
+Table:
+I created the table from the base. It's written in a way that we can reuse it with any other component. You can empower every row with the ability to sort. Also we can have our custom record, for example if we want a record have a differnet background, we can override it by formatter function. We can have our custom task bar on table too.
+
+Offcanvas:
+This component can also be reused all over the project.
+
 ### Do we really needs a mono repo and different libraries
 
 You may think with yourself and say what the heck? do I need lots of libs, I can create a project and do what I want in a second. Or in far better way, you say, it would be great for project with large scales.
@@ -115,4 +123,5 @@ Words can not express how powerfull this monorepo is. You should try it. In simp
 
 # Have a word
 
-Thank you for giving me this opportunity and challenge. The readme ilustrate a big picture, I can talk about each section for hours :). It would be wonderfull if you could give me feedback. Anyway I hope you like it.
+I know Absence componet needs to be gaurded with Context so the complexity becomes much less, unfortunately I don't have enought time to refactor it and sorry for that.
+Finally, thank you for giving me this opportunity and challenge. The readme ilustrate a big picture, I can talk about each section for hours :). It would be wonderfull if you could give me feedback. Anyway I hope you like it.
