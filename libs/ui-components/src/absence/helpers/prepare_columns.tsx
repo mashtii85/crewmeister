@@ -2,7 +2,7 @@
  * PrepareColumns
  */
 
-import { IAbsenceViewModel, IColumn } from '@crewmeister-code-challenge/type'
+import { IAbsenceViewModel, IColumn } from '@crewmeister-code-challenge/types'
 import { Badge } from '../../badge'
 
 export const tableColumns: IColumn<IAbsenceViewModel>[] = [

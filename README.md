@@ -1,92 +1,117 @@
 # CrewmeisterCodeChallenge
 
-This project was generated using [Nx](https://nx.dev).
+## Introduction
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+A project to see list of absence on crewmeister and their reason plus number of days they reqeusted and whether they got confirmation, or rejection.
 
-🔎 **Smart, Fast and Extensible Build System**
+I was trying to obey seperation of concern by dividing functionalites between projects using mono repo approach.
+I
 
-## Adding capabilities to your workspace
+## Stack
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+Nx mono repo, Nextjs, react query, tailwind, styled-components, eslint, prettier, cypress, jest, typescript
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+## How it works
 
-Below are our core plugins:
+### Instalation
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+Fist step i to install packages using yarn or npm.
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+- Run `npm i`
+  OR
+- Run `yarn`
+  You can choose one of the above package manager to install packages
 
-## Generate an application
+### Run
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+By running npm start project started and you can see list of absence chained to the correspondent members
+We can sort absences by name and type. On action column we can see details of each member on an Off Canvas.
+We can also filter the list by absence type and by date and by pressing reset date filter the choosen date will be reset.
+On pagination section we have page size, total number of rows, slices of rows which is presenting, next and previous buttons which are automatically hide, for example if we are showing rows 1 to 10 then we can't see previous button.
 
-> You can use any of the plugins above to generate applications as well.
+### Tests
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+#### End-to-end test
 
-## Generate a library
+For Testing application, I went for cypress, you may ask why? Short answer would be you can write end-to-end, Integration and unit test. You are just need to give it a try. here's coprehensive answer to why, https://docs.cypress.io/guides/overview/why-cypress#What-you-ll-learn
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+To start testing end-to-end you need to run npm run e2e. The test will be run on headead mode so you can see what's going on.
+Within test I tested name and type sorts both ascending and desending orders, Filters by date and types, Off canvas, and pagination. You can run e2e test by the following script.
+Run `npm run e2e`
+A dashboard will appear which ask you in which browser you are going to test app. After choosing your favorite browser test list will appear. You are suppose to choose absence and then tests will be started.
 
-> You can also use any of the plugins above to generate libraries as well.
+#### Unit test
 
-Libraries are shareable across libraries and applications. They can be imported from `@crewmeister-code-challenge/mylib`.
+There is also a small unit test using jest on utilities lib which examine sortObject function.
+Run `npm run utilities:test`
 
-## Development server
+## Project Structure
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+### Projects
 
-## Code scaffolding
+- crewmeister
+- crewmeister-e2e
+  We have two front-end project crewmeister and it's correspondent e2e project. crewmeister is what the stroy begins.
 
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
+### Libs
 
-## Build
+- assets
+- services
+- styles
+- types
+- ui-components
+- utilities
 
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Each library should follow plural naming as you can see.
 
-## Running unit tests
+assets:
+Every thing from images and svg files goes to this library
 
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+services:
+Core functionlity and blue print of CRUD operation is placed in this library. We have a base service which is handle CRUD operation lives in here. the reason we created a base service is that some day if we want to use axios instead of fetch here's the only place we should change the code. BaseService Class is a singleton. So it's created once and will be reused as project is live.
+Each component has a service for it's own, these services lives in this library as well. Each service will use the baseService.
 
-Run `nx affected:test` to execute the unit tests affected by a change.
+styles:
+I used tailwind design system with styled-components, so as the name implies all the styles are placed in this library. One thing you should be aware of is that in mono repos you some times shouldn't exprot all of the files in a library. It could be tricky and some time will be troublesome. For example if we want to style two `<td>` tag then we have two `StyledTd` with different functionality. The same goes here and works in here. So I was trying to avoid export all files in a single index file
 
-## Running end-to-end tests
+types
+In this project I utilize TypeScript and love the power it gives us developer. So any types consisting of interfaces or types goes to this library. The rule is that every interface starts with `I` and every type starts with `T`. In this way we can clarify those modules start with `I` or `T` are actually types.
 
-Run `nx e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+ui-components
+Old days when we want to create a nextjs app or create react app or any other react app, we created src and on src everything goes to the `components` folder. Suppose we have migrated everything from components folder to ui-components library. It will take care of every react component and let our main app small and clean. In fact that's the whole point of using mono repos.
 
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+utilies:
+If we want to have a helper to let a currency, comma separated, then the comma-separated function is a utility and it would lives in this library. So any utility lives in this library.
 
-## Understand your workspace
+### Do we really needs a mono repo and different libraries
 
-Run `nx graph` to see a diagram of the dependencies of your projects.
+You may think with yourself and say what the heck? do I need lots of libs, I can create a project and do what I want in a second. Or in far better way, you say, it would be great for project with large scales.
+I would say yes! when we always put separation of concern at first and even second priority then after 2 or 3 years for example application won't be a mess. In this way everything is placed where it belongs to.
+Every small project is going to be a gigantic, one day or at least let's think in this way. So if from the very begining we have the structure and core which has the ability to expand and grow then we are in business.
 
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
-
+Here's the project deps.
 ![alt text](https://github.com/mashtii85/crewmeister/blob/main/graph.png?raw=true)
+We can see dependencies between packages
+
+### Stacks
+
+Design system: I used to work with Material UI and IUI lately. Then I heard tailwind is on the market and has a lot to say. So I decided to give it a shot and it turns out I love it. yes it was the first time I was using tailwind
+
+react-query: I think it's a must for anyone who works with API to about react-query. we also have SWR, but I love the way react query works. I used apollo client and it's kind of like that
+
+styled-components: Well it's been years I am working with styled-components and it's really nice. you can provide themes and have css in js.
+
+prettier/linter: it's a must that every application should follow the same pattern and I think with prettier and linter we can reach this goal
+
+nextjs
+For now I am only using the power of nextjs pagination and no more
+
+TypeScript
+I remember when I first started to code in js with the background of comile time programming. Well it was pretty hard and troublesome for me to work with js. everything fine but when you run the code not one, lots of errors comes out of blue and you will bombared with lots of undefined and unhandled errors. A year later I got familiar with TS and I love to work with it. maybe you thing it make us slower. Yes at first it does, but when you go further and project gets bigger and bigger it will become a God.
+
+nx-monorepo:
+Words can not express how powerfull this monorepo is. You should try it. In simple way, if we have 3 projects, backend, frontend and mobile, all written in js then you can place all in the mono repo. You can empower any package to build and publish in npm or github packages
+
+# Have a word
+
+Thank you for giving me this opportunity and challenge. The readme ilustrate a big picture, I can talk about each section for hours :). It would be wonderfull if you could give me feedback. Anyway I hope you like it.

@@ -5,6 +5,7 @@
   "scripts": {
     "start": "nx serve",
     "e2e": "nx e2e crewmeister-e2e --watch",
+    "test:utilities": "nx run utilities:test",
     "build": "nx build",
     "test": "nx test"
   },

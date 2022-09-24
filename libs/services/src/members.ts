@@ -3,7 +3,7 @@
  */
 
 //Types
-import { IBaseModel, IMember } from '@crewmeister-code-challenge/type'
+import { IBaseModel, IMember } from '@crewmeister-code-challenge/types'
 
 //BaseService
 import Service from './baseService'

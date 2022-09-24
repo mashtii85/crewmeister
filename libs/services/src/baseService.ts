@@ -3,8 +3,8 @@
  */
 
 // Types
-import { IBaseModel } from '@crewmeister-code-challenge/type'
-import { timeout } from '@crewmeister-code-challenge/utility'
+import { IBaseModel } from '@crewmeister-code-challenge/types'
+import { timeout } from '@crewmeister-code-challenge/utilities'
 
 // Axios
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'

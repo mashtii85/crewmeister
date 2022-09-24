@@ -2,8 +2,8 @@
  *
  */
 
-import { IAbsence, IAbsenceViewModel, IMember } from '@crewmeister-code-challenge/type'
-import { DateDiffInDays } from '@crewmeister-code-challenge/utility'
+import { IAbsence, IAbsenceViewModel, IMember } from '@crewmeister-code-challenge/types'
+import { DateDiffInDays } from '@crewmeister-code-challenge/utilities'
 import { calculateStatus } from './status'
 
 export const prepareRows = ({

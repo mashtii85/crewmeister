@@ -1,8 +1,8 @@
 /**
- *
+ * Absences - Hlepers - Status
  */
 
-import { TAbsenceStatus } from '@crewmeister-code-challenge/type'
+import { TAbsenceStatus } from '@crewmeister-code-challenge/types'
 
 export const calculateStatus = ({ rejected, confirmed }: { rejected?: string; confirmed?: string }): TAbsenceStatus => {
   if (rejected) {

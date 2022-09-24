@@ -1,7 +1,7 @@
 /**
  * Absence - Taskbar
  */
-import { AbsenceType, ISelect } from '@crewmeister-code-challenge/type'
+import { AbsenceType, ISelect } from '@crewmeister-code-challenge/types'
 import { Select } from '../../select'
 import { DayValue } from '@hassanmojab/react-modern-calendar-datepicker'
 import { DatePicker } from '../../date_picker'
@@ -31,7 +31,7 @@ export const AbsenceTaskbar = ({
       <span className="pr-3" />
       <DatePicker day={day} setDay={setDay} />
       <span className="pr-3" />
-      <StyledResetButton onClick={resetDateFilterHandler}>Rest Filters</StyledResetButton>
+      <StyledResetButton onClick={resetDateFilterHandler}>Rest Date Filter</StyledResetButton>
     </div>
   )
 }

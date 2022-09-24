@@ -2,7 +2,7 @@
  * Sort_Objects - Specs - Fixtures
  */
 
-import { IMember } from '@crewmeister-code-challenge/type'
+import { IMember } from '@crewmeister-code-challenge/types'
 
 interface IFixutre {
   members: IMember[]

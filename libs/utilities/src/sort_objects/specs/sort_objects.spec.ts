@@ -2,7 +2,7 @@
  * Sort_Objects - Sort_Objects.spec
  */
 
-import { IMember } from '@crewmeister-code-challenge/type'
+import { IMember } from '@crewmeister-code-challenge/types'
 import { sortObject } from '..'
 import { fixtures } from './fixtures'
 
