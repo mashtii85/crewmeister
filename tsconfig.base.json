@@ -20,6 +20,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "types": ["node", "jest"],
     "paths": {
       "@crewmeister-code-challenge/assets": ["libs/assets/src/index.ts"],
       "@crewmeister-code-challenge/services": ["libs/services/src/index.ts"],
