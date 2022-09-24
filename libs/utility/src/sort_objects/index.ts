@@ -4,7 +4,7 @@
 
 import { TSort } from '@crewmeister-code-challenge/type'
 
-export const sortObject = <T>({ array = [], key, sortType }: { array: T[]; key: string; sortType: TSort }) => {
+export const sortObject = <T>({ array = [], key, sortType }: { array: T[]; key: keyof T; sortType: TSort }) => {
   if (sortType === 'DES') {
     array.sort((a: any, b: any) => (a[key] > b[key] ? 1 : b[key] > a[key] ? -1 : 0))
   } else {
