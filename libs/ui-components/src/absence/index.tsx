@@ -12,7 +12,7 @@ import { useQuery } from 'react-query'
 import { useContext, useEffect, useState } from 'react'
 
 import { tableColumns } from './helpers'
-import { IAbsence, AbsenceType } from '@crewmeister-code-challenge/type'
+import { IAbsence } from '@crewmeister-code-challenge/type'
 import { MemberContext } from '../members/context'
 import { AbsencesService } from '@crewmeister-code-challenge/services'
 import { OffCanvas } from '../off_canvas'

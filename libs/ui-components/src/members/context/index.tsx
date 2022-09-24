@@ -1,5 +1,5 @@
 /**
- *
+ * Members - Context - Index
  */
 
 import { MembersService } from '@crewmeister-code-challenge/services'
@@ -13,5 +13,9 @@ export const MemberProvider = ({ children }: { children: JSX.Element | JSX.Eleme
   const service = new MembersService()
   const { data, isLoading, error } = useQuery('employee-list', service.get)
 
-  return <MemberContext.Provider value={{ members: data?.payload ?? [], isLoading }}>{children}</MemberContext.Provider>
+  return (
+    <MemberContext.Provider value={{ members: data?.payload ?? [], isLoading }}>
+      <div className="md:container md:mx-auto">{children}</div>
+    </MemberContext.Provider>
+  )
 }
