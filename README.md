@@ -89,5 +89,4 @@ Teams using Nx gain the advantage of building full-stack applications with their
 
 Visit [Nx Cloud](https://nx.app/) to learn more.
 
-![alt text](https://github.com/[mashti85]/[crewmeister
-reponame]/blob/[main]/graph.png?raw=true)
+![alt text](https://github.com/mashti85/crewmeisterreponame/blob/main/graph.png?raw=true)
