@@ -16,7 +16,11 @@ export const Select = ({
   return (
     <StyledSelect onChange={onChange}>
       {options.map((item) => {
-        return <option value={item.key}>{item.value}</option>
+        return (
+          <option key={item.key} value={item.key}>
+            {item.value}
+          </option>
+        )
       })}
     </StyledSelect>
   )

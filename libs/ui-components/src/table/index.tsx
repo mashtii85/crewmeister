@@ -63,7 +63,9 @@ export const Table = ({
         <TableHeader columns={columns} sortHandler={sortHandler} />
         <tbody>
           {rowsChunk.length === 0 ? (
-            <StyledEmptyTd colSpan={columns.length + 1}>Nothing to show</StyledEmptyTd>
+            <tr>
+              <StyledEmptyTd colSpan={columns.length + 1}>Nothing to show</StyledEmptyTd>
+            </tr>
           ) : (
             rowsChunk.map((item, index) => {
               return (
@@ -73,9 +75,13 @@ export const Table = ({
                     const column = columns[rowIndex]
                     if (column.hidden) return null
                     const record = column.formatter ? column.formatter({ row: item }) : row
-                    return <td data-cy={`td-${rowIndex}`}>{record!}</td>
+                    return (
+                      <td key={`${item['id']}${rowIndex}${index}`} data-cy={`td-${rowIndex}`}>
+                        {record!}
+                      </td>
+                    )
                   })}
-                  <StyledTd>
+                  <StyledTd key={`${item['id']}${index}action`}>
                     <StyledActionButton data-cy={`show-action-${index}`} onClick={() => detailsHandler(item)}>
                       <PersonDetails />
                     </StyledActionButton>
