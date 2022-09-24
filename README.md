@@ -101,7 +101,8 @@ react-query: I think it's a must for anyone who works with API to about react-qu
 
 styled-components: Well it's been years I am working with styled-components and it's really nice. you can provide themes and have css in js.
 
-prettier/linter: it's a must that every application should follow the same pattern and I think with prettier and linter we can reach this goal
+prettier/linter: it's a must that every application should follow the same pattern and I think with prettier and linter we can reach this goal. for linting all projects and libs:
+Run `npm run lint`
 
 nextjs
 For now I am only using the power of nextjs pagination and no more
