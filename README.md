@@ -123,5 +123,5 @@ Words can not express how powerfull this monorepo is. You should try it. In simp
 
 # Have a word
 
-I know Absence componet needs to be gaurded with Context so the complexity becomes much less, unfortunately I don't have enought time to refactor it and sorry for that.
+I know Absence componet needs to be equiped with Context so the complexity becomes much less, unfortunately I don't have enought time to refactor it and sorry for that.
 Finally, thank you for giving me this opportunity and challenge. The readme ilustrate a big picture, I can talk about each section for hours :). It would be wonderfull if you could give me feedback. Anyway I hope you like it.
