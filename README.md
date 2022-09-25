@@ -36,7 +36,7 @@ For Testing application, I went for cypress, you may ask why? Short answer would
 To start testing end-to-end you need to run npm run e2e. The test will be run on headead mode so you can see what's going on.
 Within test I tested name and type sorts in both ascending and desending orders, Filters by date and types, Off canvas, and pagination. You can run e2e test by the following script.
 
-### Run `npm run e2e`
+#### Run `npm run e2e`
 
 A dashboard will appear which ask you in which browser you are going to test your app. After choosing your favorite browser test list will appear. You are suppose to choose absence and then tests will be started.
 
@@ -44,7 +44,7 @@ A dashboard will appear which ask you in which browser you are going to test you
 
 There is also a small unit test using jest on utilities lib which examine sortObject function.
 
-### Run `npm run utilities:test`
+#### Run `npm run utilities:test`
 
 ## Project Structure
 
@@ -136,7 +136,7 @@ I remember when I first started to code in js with the background of comile time
 
 ### nx-monorepo
 
-Words can not express how powerfull this monorepo is. You should try it. In simple way, if we have 3 projects, backend, frontend and mobile, all written in js then you can place all in the mono repo. You can empower any package to build and publish in npm or github packages
+Words can not express how powerfull this monorepo is. Definitely advise it. In simple way, if we have 3 projects, backend, frontend and mobile, all written in js then you can place all in the mono repo. You can empower any package to build and publish in npm or github packages
 
 # Have a word
 
